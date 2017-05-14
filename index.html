@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<style> 
+	html{
+		background-color: #88bbd6;
+		padding: 10px;
+		border-radius: 10px;
+		font-family: arial;
+	}
+	h1, h2{
+		text-align: center;
+	}
+	body{
+		background-color: #e9e9e9;
+		padding: 10px;
+		border-radius: 10px;
+	}
+	#boatlist{
+		columns: "30em 4";
+	}
+	.pageheader{
+		background-color: #88bbFF;
+		padding: 10px;
+		border-radius: 10px;
+		color: white;
+	}
+	.sliderval{
+		text-align: center;
+	}
+	.svgcontainer{
+		margin-top: 10px;
+		border-radius: 10px;
+	}
+	.controllerpair, .controllerholder{
+		display: inline-block;
+		padding: 10px;
+
+	}
+	.controllerholder{
+		background-color: #cdcdcd;
+		border-radius: 10px;
+		width: 48%;
+	}
+	ul{
+		columns: 5 19em;
+	}
+</style>
+<head>
+	<meta charset="UTF-8">
+	<title>Sailboat Performance Analysis</title>
+</head>
+<body>
+	<div class="pageheader">
+		<h1>Find a fast boat</h1>
+		<h2>within PHRF and boat length</h2>
+	</div>
+	<div class="svgcontainer">
+		<svg></svg>
+	</div>
+
+
+	<div id="controller">
+
+		<div class="controllerholder">
+			<h2>PHRF</h2>
+			<div class="controllerpair">
+				<div class="slider">
+					Min -150<input id="phrfmin" type="range" min="-150" max="360" value="-150" step="1">
+					360
+				</div>
+				<div class="sliderval" id="phrfmindisp">
+					-150
+				</div>
+			</div>
+			<div class="controllerpair">
+				<div class="slider">
+					Max: -150<input id="phrfmax" type="range" min="-150" max="360" value="360" step="1">360
+				</div>
+				<div class="sliderval" id="phrfmaxdisp">
+					360
+				</div>
+			</div>
+		</div>
+
+
+		<div class="controllerholder">
+		<h2>LOA - length</h2>
+			<div class="controllerpair">
+				
+				<div class="slider">
+					Min: 15<input id="loamin" type="range" min="15" max="80" value="15" step="1">80
+				</div>
+				<div class="sliderval" id="loamindisp">
+					15
+				</div>
+			</div>
+			<div class="controllerpair">
+				<div class="slider">
+					Max: 0<input id="loamax" type="range" min="15" max="80" value="80" step="1">80
+				</div>
+				<div class="sliderval" id="loamaxdisp">
+					80
+				</div>
+			</div>
+		</div>
+
+
+
+		
+		<!--span>
+			Length: Min: 0<input id="loamin" type="range" min="0" max="80" value="0" step="1">80
+			Max: 0<input id="loamax" type="range" min="0" max="80" value="80" step="1">80
+		</span-->
+	</div>
+	<div id="boatlist">
+		<!--span><h2>Boat List Heading</h2></span>
+		<ul id="phrflist">
+			
+		</ul-->
+	</div>
+</body>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+
+</html>
