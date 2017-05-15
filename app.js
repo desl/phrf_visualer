@@ -35,7 +35,6 @@ height = 600;
 
 d3.select("#boatlist")
 	.append("ul")
-		.attr('columns', _ => Math.floor((window.innerWidth - 60)/350) || 1)
 		.attr('id','phrflist')
 
 
@@ -57,19 +56,18 @@ var tooltip = d3.select("body")
 d3.csv("yralis.csv", function(error, data) {
   console.log("loading the csv?");
   if (error) throw error;
-  // console.log(data); // [{"Hello": "world"}, …]
 
   console.log("phrf",d3.extent(data, d => parseInt(d.phrf)))
-  console.log("loa",d3.extent(data, d => parseInt(d.loa)))
+  console.log("loa",d3.extent(data, d => parseFloat(d.loa)))
   console.log("displacement",d3.extent(data, d => parseInt(d.displacement)))
 
 	d3.select("#phrflist")
     .selectAll('li')
     .data(data)
-    // .data(boatData)
     .enter()
     .append('li')
        .text( d => `${d.loa} ${d.boat} ${d.phrf}`)
+       .classed(d => d.boat, true)
 
     xScale = d3.scaleLinear()
             .domain(d3.extent(data, d => parseInt(d.loa)))
@@ -82,9 +80,6 @@ d3.csv("yralis.csv", function(error, data) {
     rScale = d3.scaleLinear()
     		.domain(d3.extent(data, d => parseInt(d.displacement)))
     		.range([5,20]);
-
-    // colorScale = d3.interpolateCool()
-    // 		.domain(d3.extent(data, d=> parseInt(d.phrf)));
 
     colorScale = d3.scaleLog()
 		    .domain(d3.extent(data, d => parseInt(d.displacement)))
@@ -100,7 +95,6 @@ d3.csv("yralis.csv", function(error, data) {
 			.attr('cy', d => yScale(d.phrf))
 			.attr('r', d => rScale(d.displacement))
 			.attr('fill', d => colorScale(d.displacement))
-			// .attr('fill', 'white')
 			.attr('stroke','#88bbd6')
 			.attr('stroke-width', '1px')
 			.on("mouseenter", function(d) {
@@ -141,11 +135,6 @@ d3.csv("yralis.csv", function(error, data) {
 				.data(data)
 				.style('display', d => hideOrNot(d))
 
-			d3.select("svg")
-				.selectAll('circle')
-				.data(data)
-				.style('display', d => hideOrNot(d))
-
 			xScale = d3.scaleLinear()
 	            .domain([boatFilter.loamin,boatFilter.loamax])
 	            .range([padding.left,width - padding.right]);
@@ -154,8 +143,10 @@ d3.csv("yralis.csv", function(error, data) {
 	            .domain([boatFilter.phrfmin, boatFilter.phrfmax])
 	            .range([padding.top,height - padding.bottom]);
 
-	        d3.select('svg')
+			d3.select("svg")
 				.selectAll('circle')
+				.data(data)
+				.style('display', d => hideOrNot(d))
 				.attr('cx', d => xScale(d.loa))
 				.attr('cy', d => yScale(d.phrf))
 

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--Colors borrowed from:https://designschool.canva.com/blog/website-color-schemes/ 
+	number 29 (Clean & Crisp) -->
 <style> 
 	html{
 		background-color: #88bbd6;
@@ -7,16 +9,25 @@
 		border-radius: 10px;
 		font-family: arial;
 	}
-	h1, h2{
-		text-align: center;
-	}
 	body{
 		background-color: #e9e9e9;
 		padding: 10px;
 		border-radius: 10px;
 	}
+	h1, h2{
+		text-align: center;
+	}
+	svg{
+		border-radius: 10px;
+	}
+	ul{
+		columns: 5 19em;
+	}
 	#boatlist{
 		columns: "30em 4";
+	}
+	#controller{
+		text-align: center;
 	}
 	.pageheader{
 		background-color: #88bbFF;
@@ -24,25 +35,27 @@
 		border-radius: 10px;
 		color: white;
 	}
-	.sliderval{
-		text-align: center;
-	}
-	.svgcontainer{
-		margin-top: 10px;
-		border-radius: 10px;
-	}
 	.controllerpair, .controllerholder{
 		display: inline-block;
 		padding: 10px;
-
+		text-align:center;
 	}
 	.controllerholder{
 		background-color: #cdcdcd;
 		border-radius: 10px;
 		width: 48%;
 	}
-	ul{
-		columns: 5 19em;
+	.sliderval{
+		text-align: center;
+	}
+	.svgcontainer{
+		margin-top: 10px;
+	}
+	.tooltip{
+		border: solid darkblue;
+		border-radius: 10px;
+		padding: 10px;
+		background-color: #cdcdcd;
 	}
 </style>
 <head>
@@ -84,7 +97,7 @@
 
 
 		<div class="controllerholder">
-		<h2>LOA - length</h2>
+		<h2>LOA - Length</h2>
 			<div class="controllerpair">
 				
 				<div class="slider">
@@ -104,19 +117,9 @@
 			</div>
 		</div>
 
-
-
-		
-		<!--span>
-			Length: Min: 0<input id="loamin" type="range" min="0" max="80" value="0" step="1">80
-			Max: 0<input id="loamax" type="range" min="0" max="80" value="80" step="1">80
-		</span-->
 	</div>
 	<div id="boatlist">
-		<!--span><h2>Boat List Heading</h2></span>
-		<ul id="phrflist">
-			
-		</ul-->
+
 	</div>
 </body>
   <script src="https://d3js.org/d3.v4.js"></script>
