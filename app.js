@@ -29,14 +29,13 @@ let padding = {
 	right: 10
 }
 
-width = 900;
+// width = 900;
 width = window.innerWidth - 60;
 height = 600;
 
 d3.select("#boatlist")
 	.append("ul")
 		.attr('id','phrflist')
-
 
 d3.select("svg")
 	.attr('height',height)
@@ -50,8 +49,6 @@ var tooltip = d3.select("body")
                 .style("opacity", 0)
                 .style("position", "absolute")
                 .attr("pointer-events","none");
-
-
 
 d3.csv("yralis.csv", function(error, data) {
   console.log("loading the csv?");
@@ -98,16 +95,11 @@ d3.csv("yralis.csv", function(error, data) {
 			.attr('stroke','#88bbd6')
 			.attr('stroke-width', '1px')
 			.on("mouseenter", function(d) {
-
 	    		tooltip.text(`${d.boat}\n phrf: ${d.phrf}`)
 		           .style("opacity", 1)
 		           // .style("left", d3.event.pageX + "px")
 		           .style("left", d3.event.pageX > window.innerWidth -200? d3.event.pageX -200 + "px" : d3.event.pageX + "px")
 		           .style("top", d3.event.pageY + "px")
-		           .style("border", "solid darkblue")
-		           .style("border-radius", "10px")
-		           .style("padding", "10px")
-		           .style("background-color", "#cdcdcd");
 	        })
 	        .on("mouseout", () => tooltip.style("opacity", 0));
 
@@ -159,11 +151,7 @@ d3.csv("yralis.csv", function(error, data) {
 			d3.select('svg')
 				.select('.yAxis')
 				.call(loaAxis)
-
-
-
 		});
-
 });
 
 
